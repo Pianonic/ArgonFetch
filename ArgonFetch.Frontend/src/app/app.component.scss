@@ -1,0 +1,97 @@
+:host {
+  --primary-color: #00A3FF;
+  --primary-hover: #0086D1;
+}
+
+.nav-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  background: var(--sl-color-neutral-0);
+  border-bottom: 1px solid var(--sl-color-neutral-200);
+  z-index: 100;
+  backdrop-filter: blur(10px);
+
+  .nav-start, .nav-end {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+  }
+
+  .brand {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--primary-color);
+  }
+}
+
+// Adjust container to account for fixed nav
+.container {
+  min-height: calc(100vh - 4rem);
+  margin-top: 4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+}
+
+.download-form {
+  width: 100%;
+  max-width: 600px;
+  text-align: center;
+  
+  h1 {
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    font-size: 3rem;
+    background: linear-gradient(45deg, var(--primary-color), #00D1FF);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .subtitle {
+    margin-bottom: 2rem;
+    color: var(--sl-color-neutral-500);
+    font-size: 1.2rem;
+  }
+}
+
+.input-group {
+  display: flex;
+  gap: 0.5rem;
+  
+  sl-input {
+    flex: 1;
+  }
+
+  sl-input::part(base) {
+    --sl-input-border-radius-large: 0.5rem;
+  }
+
+  sl-button::part(base) {
+    --sl-button-border-radius-large: 0.5rem;
+  }
+}
+
+// Dark mode adjustments
+[sl-theme='dark'] {
+  .nav-container {
+    background: rgba(var(--sl-color-neutral-900-rgb), 0.8);
+    border-bottom-color: var(--sl-color-neutral-700);
+  }
+
+  .download-form .subtitle {
+    color: var(--sl-color-neutral-400);
+  }
+}
+
+// Override Shoelace primary color
+::part(base) {
+  --sl-color-primary-500: var(--primary-color);
+  --sl-color-primary-600: var(--primary-hover);
+}

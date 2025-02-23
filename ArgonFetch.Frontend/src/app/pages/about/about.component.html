@@ -1,0 +1,53 @@
+<div class="about-container">
+  <header>
+    <h1>About ArgonFetch</h1>
+    <p class="lead">A powerful, universal media downloader that supports multiple platforms and formats.</p>
+  </header>
+
+  <section class="features">
+    <h2>Supported Platforms</h2>
+    <div class="platform-grid">
+      <sl-card class="platform-card" *ngFor="let platform of supportedPlatforms">
+        <div class="platform-header">
+          <sl-icon [name]="platform.icon"></sl-icon>
+          <h3>{{ platform.name }}</h3>
+        </div>
+        <ul class="feature-list">
+          <li *ngFor="let feature of platform.features">
+            <sl-icon name="check2-circle"></sl-icon>
+            {{ feature }}
+          </li>
+        </ul>
+      </sl-card>
+    </div>
+  </section>
+
+  <section class="how-to">
+    <h2>How to Use</h2>
+    <ol class="steps">
+      <li>
+        <h3>Copy URL</h3>
+        <p>Copy the URL of the media you want to download from any supported platform.</p>
+      </li>
+      <li>
+        <h3>Paste & Download</h3>
+        <p>Paste the URL into ArgonFetch and click the download button.</p>
+      </li>
+      <li>
+        <h3>Choose Format</h3>
+        <p>Select your preferred format and quality options.</p>
+      </li>
+      <li>
+        <h3>Get Your Media</h3>
+        <p>Wait for the download to complete and enjoy your media!</p>
+      </li>
+    </ol>
+  </section>
+
+  <section class="disclaimer">
+    <sl-alert variant="warning" open>
+      <sl-icon slot="icon" name="exclamation-triangle"></sl-icon>
+      Please ensure you have the right to download and use the content. Respect copyright laws and platform terms of service.
+    </sl-alert>
+  </section>
+</div> 

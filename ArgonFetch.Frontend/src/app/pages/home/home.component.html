@@ -1,0 +1,21 @@
+<div class="container">
+  <form (submit)="handleSubmit($event)" class="download-form">
+    <h1>ArgonFetch</h1>
+    <p class="subtitle">Universal Media Downloader</p>
+    
+    <div class="input-group">
+      <sl-input 
+        placeholder="Enter URL to download..." 
+        size="large"
+        clearable
+      >
+        <sl-icon slot="prefix" name="link-45deg"></sl-icon>
+      </sl-input>
+
+      <sl-button type="submit" variant="primary" size="large">
+        <sl-icon slot="prefix" name="download"></sl-icon>
+        Download
+      </sl-button>
+    </div>
+  </form>
+</div> 

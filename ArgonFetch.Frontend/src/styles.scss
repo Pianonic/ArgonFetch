@@ -1,1 +1,50 @@
 /* You can add global styles to this file, and also import other style files */
+
+:root {
+  --sl-transition-medium: 0.2s;
+  --scrollbar-width: 10px;
+  --scrollbar-track: var(--sl-color-neutral-100);
+  --scrollbar-thumb: var(--sl-color-neutral-300);
+  --scrollbar-thumb-hover: var(--sl-color-neutral-400);
+}
+
+body {
+  margin: 0;
+  font-family: var(--sl-font-sans);
+  background: var(--sl-color-neutral-0);
+  color: var(--sl-color-neutral-900);
+}
+
+[sl-theme='dark'] {
+  background: var(--sl-color-neutral-900);
+  color: var(--sl-color-neutral-100);
+  --scrollbar-track: var(--sl-color-neutral-900);
+  --scrollbar-thumb: var(--sl-color-neutral-700);
+  --scrollbar-thumb-hover: var(--sl-color-neutral-600);
+}
+
+/* Modern scrollbar styling */
+/* For Webkit browsers (Chrome, Safari) */
+::-webkit-scrollbar {
+  width: var(--scrollbar-width);
+}
+
+::-webkit-scrollbar-track {
+  background: var(--scrollbar-track);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--scrollbar-thumb);
+  border-radius: calc(var(--scrollbar-width) / 2);
+  border: 2px solid var(--scrollbar-track);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--scrollbar-thumb-hover);
+}
+
+/* For Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track);
+}

@@ -1,0 +1,71 @@
+.container {
+  position: fixed;
+  top: 4rem;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.download-form {
+  width: 100%;
+  max-width: 800px;
+  text-align: center;
+  padding: 0 1rem;
+  margin-bottom: 4rem;
+  
+  h1 {
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    font-size: 3rem;
+    background: linear-gradient(45deg, var(--primary-color), #00D1FF);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .subtitle {
+    margin-bottom: 2rem;
+    color: var(--sl-color-neutral-500);
+    font-size: 1.2rem;
+  }
+}
+
+.input-group {
+  display: flex;
+  gap: 0.5rem;
+  justify-content: center;
+  
+  sl-input {
+    width: 100%;
+    max-width: 600px;
+  }
+
+  sl-input::part(base) {
+    --sl-input-border-radius-large: 0.5rem;
+  }
+
+  sl-button::part(base) {
+    --sl-button-border-radius-large: 0.5rem;
+  }
+}
+
+// Dark mode adjustments
+[sl-theme='dark'] {
+  .download-form .subtitle {
+    color: var(--sl-color-neutral-400);
+  }
+}
+
+// Responsive design
+@media (max-width: 768px) {
+  .input-group {
+    flex-direction: column;
+    align-items: stretch;
+    
+    .format-selector {
+      justify-content: center;
+    }
+  }
+} 
