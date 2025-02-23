@@ -18,4 +18,16 @@
       </sl-button>
     </div>
   </form>
+
+  <div class="rating-container">
+    <p>How would you rate ArgonFetch?</p>
+    <sl-rating
+      precision="1"
+      value="{{ rating }}"
+      (sl-change)="handleRating($event)"
+    ></sl-rating>
+    <p class="rating-label" *ngIf="rating > 0">
+      Thanks for your {{ rating }}-star rating!
+    </p>
+  </div>
 </div> 

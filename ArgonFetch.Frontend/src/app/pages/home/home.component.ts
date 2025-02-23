@@ -10,8 +10,16 @@ import { CommonModule } from '@angular/common';
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class HomeComponent {
+  rating: number = 0;
+
   handleSubmit(event: Event) {
     event.preventDefault();
     // Handle download logic here
+  }
+
+  handleRating(event: any) {
+    this.rating = event.detail.value;
+    // Here you could send the rating to your backend
+    console.log('New rating:', this.rating);
   }
 } 

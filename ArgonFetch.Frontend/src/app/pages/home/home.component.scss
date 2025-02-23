@@ -68,4 +68,42 @@
       justify-content: center;
     }
   }
+}
+
+.rating-container {
+  position: fixed;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  
+  p {
+    margin: 0.5rem 0;
+    color: var(--sl-color-neutral-500);
+    font-size: 0.9rem;
+  }
+
+  sl-rating {
+    --symbol-size: 2rem;
+    --symbol-color-active: #FFB800;
+    --symbol-color-hover: #FFD700;
+  }
+
+  .rating-label {
+    font-weight: 500;
+    color: var(--sl-color-success-600);
+  }
+}
+
+// Dark mode adjustments
+[sl-theme='dark'] {
+  .rating-container {
+    p {
+      color: var(--sl-color-neutral-400);
+    }
+    
+    .rating-label {
+      color: var(--sl-color-success-500);
+    }
+  }
 } 
