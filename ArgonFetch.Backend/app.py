@@ -1,5 +1,7 @@
+import os
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.staticfiles import StaticFiles
 import uvicorn
 
 from enums.audio_content_type import ContentType
@@ -9,6 +11,13 @@ from platform_handlers import content_type_identifyer, music_fetcher, platform_i
 
 app = FastAPI(title="ArgonFetch API", version="0.0.1")
 
+if os.getenv("ENV") == "production":
+    frontend_path = "frontend/dist/frontend"
+    if os.path.exists(frontend_path):
+        app.mount("/", StaticFiles(directory=frontend_path, html=True), name="frontend")
+    else:
+        print(f"Warning: Frontend build not found at {frontend_path}")
+        
 # Enable CORS
 app.add_middleware(
     CORSMiddleware,

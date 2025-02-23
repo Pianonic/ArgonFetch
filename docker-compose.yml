@@ -1,0 +1,28 @@
+version: '3.8'
+
+services:
+  frontend:
+    build:
+      context: .
+      dockerfile: ArgonFetch.Frontend/Dockerfile
+    ports:
+      - "4200:4200"
+    environment:
+      - NODE_ENV=production
+    volumes:
+      - ./frontend:/app
+
+  backend:
+    build:
+      context: .
+      dockerfile: ArgonFetch.Backend/Dockerfile
+      args:
+        API_BASE_URL: "http://localhost:8000"  # Adjust based on deployment needs
+    ports:
+      - "8000:8000"
+    environment:
+      - ENV=production
+    volumes:
+      - ./backend:/app
+    depends_on:
+      - frontend
