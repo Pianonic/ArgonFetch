@@ -1,16 +1,15 @@
-version: '3.8'
-
 services:
   frontend:
     build:
-      context: .
-      dockerfile: ArgonFetch.Frontend/Dockerfile
+      context: ./ArgonFetch.Frontend
+      dockerfile: Dockerfile
     ports:
       - "4200:4200"
     environment:
       - NODE_ENV=production
+    command: npm start
     volumes:
-      - ./frontend:/app
+      - ./ArgonFetch.Frontend:/app
 
   backend:
     build:
@@ -23,6 +22,6 @@ services:
     environment:
       - ENV=production
     volumes:
-      - ./backend:/app
+      - ./ArgonFetch.Backend:/app
     depends_on:
       - frontend

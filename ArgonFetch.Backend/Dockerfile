@@ -1,25 +1,19 @@
-# Use Node.js to build Angular
-FROM node:18 AS frontend-build
-
-WORKDIR /frontend
-COPY frontend/package.json frontend/package-lock.json ./
-RUN npm install
-COPY frontend ./
-RUN npm run build --prod
-
 # Use Python for FastAPI backend
 FROM python:3.10
 
 WORKDIR /app
 
-# Copy backend code
-COPY . /app
-
-# Copy Angular build files into FastAPI (only in production)
-COPY --from=frontend-build /frontend/dist/frontend /app/frontend/dist/frontend
+# Copy requirements first for better caching
+COPY ArgonFetch.Backend/requirements.txt .
 
 # Install FastAPI dependencies
 RUN pip install --no-cache-dir -r requirements.txt
+
+# Install FFmpeg and other dependencies
+RUN apt-get update && apt-get install -y ffmpeg
+
+# Copy backend code
+COPY ArgonFetch.Backend/ .
 
 # Set production environment variable
 ENV ENV=production
